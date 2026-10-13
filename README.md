@@ -19,7 +19,7 @@ QY-onlyno999/
 │   ├── motion-transfer/
 │   │   └── SKILL.md               # 动作迁移 agent 规范：流程、节点映射、铁律（v1.3.1）
 │   └── dual-person-swap/
-│       └── SKILL.md               # 双人极速版人物替换规范：云端接口、词法三锁、锚帧续段、音频口径（v1.0.0）
+│       └── SKILL.md               # 双人极速版人物替换规范：云端接口、词法三锁、锚帧续段、音频口径（v1.1.0）
 └── scripts/
     ├── mt_dispatch.py             # 动作迁移 RunningHub 派发器（探针/派发/轮询/下载一体）
     ├── mt_firstframe.sh           # 抽动作段首帧
