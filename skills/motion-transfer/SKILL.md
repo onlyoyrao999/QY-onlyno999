@@ -1,7 +1,7 @@
 ---
 name: motion-transfer
 description: H3+Viggle 免提示词动作迁移 agent——把动作源视频里的人物动作迁移到目标人物图上，经 RunningHub 云端 ComfyUI 工作流一次出片。输入：一张目标人物图 + 一段动作源视频。
-version: 1.3.0
+version: 1.3.1
 ---
 
 # 动作迁移 Agent（H3+Viggle）
@@ -17,6 +17,7 @@ version: 1.3.0
 - Node 3 `video`（VHS_LoadVideo）← 动作源视频 mp4（一段 5 秒，不超过 10 秒）
 - Node 5 `image`（LoadImage）← **首帧合成图**（见下，不是原目标人物图）
 - Node 73 `value`（PrimitiveFloat，默认 10）← 数值参数
+- Node 9 `sampler_name`（KSamplerSelect）← **每次派发必须覆盖为 `er_sde`**（2026-10-13 用户指正：不切 er_sde 派发有问题；当日探针实测全图仅此一个采样器选择节点）
 - **不许碰 Node 26**（JWImageResizeToMegapixels，内部连线，覆盖会断图）
 - 计费：Standard 机型 0.2 RH币/秒，按实际运行时长结算；results 链接 24h 有效，成功后立即下载。
 

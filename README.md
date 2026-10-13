@@ -4,6 +4,10 @@
 
 输入一张**目标人物图** + 一段**动作源视频**，输出目标人物做出同样动作的新视频。不用写提示词。
 
+## 第二条线：双人极速版人物替换（2026-10-13 新增）
+
+**MiniMax H3 人物替换·双人极速版**（RunningHub 工作流 `2109881744584429569`）：人物三视图卡 + 源视频 + Ref2VA 六段式提示词，**直接替换**源视频里的人（脸/身材照卡锁定，动作/场景/运镜绑定原片）；同一接口还支持**纯文字原创**（不喂视频、帧数定时长）与**锚帧续段**（切点帧作锚续生拼接）。换人生产走这条线，动作迁移线保留给免提示词场景。规范见 `skills/dual-person-swap/SKILL.md`，派发器 `scripts/dual_swap_dispatch.py`（含云端 OpenAPI v2 接口全注释）。
+
 上游思路：吃猪侠233 / CZX233《H3+Viggle 免提示词动作迁移》（虚空折叠流系列第 5 篇）。
 
 ## 目录结构
@@ -12,11 +16,14 @@
 QY-onlyno999/
 ├── README.md                      # 本文档
 ├── skills/
-│   └── motion-transfer/
-│       └── SKILL.md               # agent 完整规范：流程、节点映射、铁律（v1.3.0）
+│   ├── motion-transfer/
+│   │   └── SKILL.md               # 动作迁移 agent 规范：流程、节点映射、铁律（v1.3.1）
+│   └── dual-person-swap/
+│       └── SKILL.md               # 双人极速版人物替换规范：云端接口、词法三锁、锚帧续段、音频口径（v1.0.0）
 └── scripts/
-    ├── mt_dispatch.py             # RunningHub 派发器（探针/派发/轮询/下载一体）
-    └── mt_firstframe.sh           # 抽动作段首帧
+    ├── mt_dispatch.py             # 动作迁移 RunningHub 派发器（探针/派发/轮询/下载一体）
+    ├── mt_firstframe.sh           # 抽动作段首帧
+    └── dual_swap_dispatch.py      # 双人极速版派发器（换人/纯文字原创/锚帧续段三模式）
 ```
 
 ## 云端工作流
