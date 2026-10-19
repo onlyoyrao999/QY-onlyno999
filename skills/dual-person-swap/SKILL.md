@@ -1,6 +1,6 @@
 ---
 name: dual-person-swap-onlyno999
-version: 1.1.0
+version: 1.2.0
 description: MiniMax H3 人物替换·双人极速版（RunningHub 工作流 2109881744584429569）生产规范：卡＋源视频＋提示词直接换人，另支持纯文字原创与锚帧续段。用户上传摊贩/场景视频说「换成XX」「替换这个人」，或要无参考视频的纯文字原创短片时使用。
 ---
 
@@ -45,6 +45,7 @@ description: MiniMax H3 人物替换·双人极速版（RunningHub 工作流 210
 
 - **白底横版三视图卡**：正面/侧面/背面全身 + 右侧大脸特写（本线唯一验证过的卡版式）。
 - 灰底带编号的大头卡**不用**（其他线实测视频会占主导、换不过来）。
+- **带声纹带的卡不许进 137**（2026-10-19《踩背看手机》实证）：五格卡底部带声纹波形＋文字带的那版挂 137 派单，**人没换掉**——成片还是源片的光头老人（同单里手机内容等其他改动却生效，说明身份绑定被声纹带污染/稀释）；换上**无声纹带的干净多视角卡**，第一单即替换成功。声纹卡只作声音参考，永不作人物参考图。
 - 脏乱差/破烂版造型不重画卡：卡照挂，破烂与污垢全在提示词里写（见 §4）。
 
 ## 3. 读原片（派发前必做）
@@ -62,6 +63,10 @@ overall_soundscape → non_diegetic_music（无配乐写 N/A）。全文英文�
 **主体只许指卡**：写「his face is copied from <Picture 1> one to one」即可——
 **不许用文字复述五官**（复述会和卡打架、把脸带偏：肉馅摊 v1 文字描脸＋令脸上带污，
 成片脸变瘦变老、认不出人，被用户打回）。
+
+**替换要直给 + 源特征非转移写死**（2026-10-19《踩背看手机》成功单沉淀）：主体定义里替换句必须直给——「<Subject 1> is the man …, REPLACED by the man from <Picture 1> — his face is copied from <Picture 1> one to one」，并紧跟一句源特征非转移：「The source man's bald head, old face and age do NOT transfer in any way」，人物的标志物（如纯黑棒球帽）也钉在主体定义里。只写温和描述（「替换成图片里的人、他光着膀子躺着」）时，源身份会整张留下来——实证：同单手机里的内容都换了，唯独人还是源片光头老人；改直给＋非转移＋干净卡后一单成功。
+
+**结尾台词能真出声**（同单实证）：detailed_description 结尾写「he suddenly turns his head toward her, his face full of anger, and shouts very angrily: <d>[Chinese] 台词</d> — with clear lip sync」，overall_soundscape 再复述该句——产物音轨里**真有这句喊声**（ASR 实证），且模型自动烧上与源片同款的黄字字幕。落点在源片回头那一拍（本片约最后 2 秒），≤约 8 秒单镜不必另钉时间戳。
 
 **绑定打底 + 签名事件明写**（两层缺一不可）：
 - 打底句：只换人，其余一切（动作/时序/镜头/场景/动物/环境细节）绑定原片 1:1 保留。
